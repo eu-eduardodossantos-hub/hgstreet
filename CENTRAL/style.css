@@ -1,0 +1,671 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+
+
+body{
+
+background:#eef3f2;
+
+}
+
+
+
+header {
+    background: #1F6F5F;
+    height: 90px;
+    display: flex;
+    align-items: center;
+}
+
+
+header span{
+
+font-size:18px;
+color:#8bd34a;
+
+}
+
+
+
+
+
+.layout {
+    display: flex;
+    /* Altera de height para min-height para o layout se adaptar aos elementos ao redor */
+    min-height: calc(100vh - 180px); 
+}
+
+
+
+
+
+aside{
+
+width:20%;
+background:#2FA084;
+color:white;
+display:flex;
+flex-direction:column;
+padding:15px;
+
+}
+
+
+
+
+.logo{
+
+font-size:28px;
+font-weight:bold;
+margin-bottom:30px;
+
+}
+
+
+.logo small{
+
+font-size:20px;
+color:#8bd34a;
+
+}
+
+
+
+aside a{
+
+color:white;
+text-decoration:none;
+padding:15px 5px;
+font-size:20px;
+
+}
+
+
+
+aside a:hover{
+
+background:#71de9e;
+border-radius: 5px;
+
+}
+
+
+
+
+main{
+
+width:80%;
+padding:30px;
+
+}
+
+
+
+
+
+/* Container do mapa */
+.mapa{
+    position:relative;
+    width:90%;
+    max-width:600px;
+    margin:auto;
+}
+
+.mapa img{
+    width:100%;
+    display:block;
+}
+
+.pin{
+
+    position:absolute;
+
+    transform:translate(-50%,-100%);
+
+    font-size:38px;
+
+    text-decoration:none;
+
+    transition:.25s;
+}
+
+/* POSIÇÃO DOS PINS */
+
+.centro{
+    left:28%;
+    top:30%;
+}
+
+
+.sao-cristovao{
+    left:39%;
+    top:14%;
+}
+
+
+.santa-cruz{
+    left:50%;
+    top:30%;
+}
+
+
+.santo-expedito{
+    left:18%;
+    top:45%;
+}
+
+
+.sao-jose{
+    left:40%;
+    top:50%;
+}
+
+
+.santa-barbara{
+    left:77%;
+    top:80%;
+}
+
+
+.mapa-santa-cruz .Otavio-F-M{
+    left:20%;
+    top:43%;
+}
+
+.mapa-santo-expedito .Otavio-F-M{
+    left:84.8%;
+    top:5%;
+}
+
+
+.Geraldo-Fulber{
+    left:57.5%;
+    top:35%;
+}
+
+.pedro-viriato-parigot-de-souza{
+    left:40%;
+    top:72.5%;
+}
+
+.Antonio-Niehues{
+    left:50%;
+    top:55.3%;
+}
+
+.Joao-Martini{
+    left:5%;
+    top:20.5%;
+}
+
+.mapa-santa-cruz .Luiz-Geraldo-Hollen{
+    left:26.8%;
+    top:60%;
+}
+
+.mapa-santo-expedito .Luiz-Geraldo-Hollen{
+    left:92%;
+    top:38%;
+}
+
+.Ricieri-Capeleti{
+    left:50%;
+    top:11.5%;
+}
+
+.Ma-Maria-Silvina{
+    left:71%;
+    top:52.5%;
+}
+
+.Otavio-Kischner{
+    left:43%;
+    top:28%;
+}
+
+.Padre-Cirilo{
+    left:59%;
+    top:38%;
+}
+
+.pin{
+    position:absolute;
+    transform:translate(-50%, -100%);
+    text-decoration:none;
+    font-size:35px;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+
+.pin:hover{
+    transform:translate(-50%, -100%) scale(1.3);
+}
+
+.nome-bairro, .nome-rua{
+
+position:absolute;
+
+bottom:40px;
+left:50%;
+
+transform:translateX(-50%);
+
+background:#062b3d;
+color:white;
+
+padding:5px 10px;
+
+border-radius:8px;
+
+font-size:14px;
+
+opacity:0;
+
+transition:0.3s;
+
+white-space:nowrap;
+
+}
+
+
+.pin:hover .nome-bairro, .nome-rua{
+
+opacity:1;
+
+}
+
+/* Quando a tela for menor que 768px (celulares e tablets) */
+@media (max-width: 768px) {
+    .pin {
+        font-size: 24px; /* Diminui o tamanho do emoji do pin */
+    }
+
+    .nome-bairro, .nome-rua{
+        font-size: 11px; /* Diminui a letra do nome do bairro */
+        padding: 3px 6px; /* Diminui a caixinha do texto */
+        bottom: 28px; /* Ajusta a distância para o balão não subir demais */
+    }
+}
+
+footer {
+    background: #1F6F5F;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    width: 100%;
+}
+
+aside a.active {
+    background: #6FCF97 !important;
+    border-radius: 5px !important;
+}
+
+/* Estilo da caixinha do bairro atual no menu */
+.bairro-atual {
+    margin-top: auto; /* Empurra a caixinha para o final do menu lateral */
+    background: #14506b; /* Um azul mais claro para destacar */
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    border-left: 4px solid #8bd34a; /* Uma barrinha verde charmosa do lado */
+}
+
+.bairro-atual span {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8bd34a; /* Cor verde para o texto auxiliar */
+    display: block;
+    margin-bottom: 4px;
+}
+
+.bairro-atual h3 {
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+}
+
+.top-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 10px;
+}
+
+
+.logo-img {
+    width: 300px;
+}
+
+
+.top-logo p {
+    color: white;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* --- TAMANHO EXCLUSIVO PARA OS PINS DE RUAS --- */
+
+/* Diminui o tamanho do emoji do pin da rua */
+.pin.rua {
+    font-size: 26px; /* O padrão dos bairros é 35px, aqui deixamos menor */
+}
+
+/* Ajusta o balão com o nome da rua para acompanhar o pin menor */
+.pin.rua .nome-bairro {
+    font-size: 12px;     /* Letra um pouco menor para a rua */
+    padding: 4px 8px;    /* Caixinha ligeiramente menor */
+    bottom: 30px;        /* Ajusta a altura para não ficar voando muito alto sobre o pin */
+}
+
+/* Controla o efeito de crescer (hover) específico para a rua */
+.pin.rua:hover {
+    transform: translate(-50%, -100%) scale(1.2); /* Cresce um pouco menos que o bairro */
+}
+
+/* --- AJUSTES GERAIS PARA CELULAR (Telas até 768px) --- */
+@media (max-width: 768px) {
+    
+    /* Move o menu lateral para cima e o mapa para baixo */
+    .layout {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    /* O menu agora ocupa 100% da largura da tela */
+    aside {
+        width: 100%;
+        padding: 10px;
+        align-items: center; /* Centraliza os links no celular */
+    }
+
+    /* Diminui o tamanho dos links do menu para não ocuparem tanto espaço */
+    aside a {
+        font-size: 16px;
+        padding: 8px 5px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* A caixinha de "Você está em:" se ajusta ao celular */
+    .bairro-atual {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    /* A área do mapa também passa a ocupar a largura total disponível */
+    main {
+        width: 100%;
+        padding: 15px;
+    }
+
+    /* Diminui o título principal (Ex: "Santa Cruz") */
+    main h2 {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    /* Ajusta o texto do cabeçalho (topo) para caber na tela */
+    .top-logo {
+        flex-direction: column;
+        gap: 5px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .logo-img {
+        width: 180px; /* Diminui a logo no celular */
+    }
+
+    .top-logo p {
+        font-size: 11px;
+    }
+    
+    header {
+        height: auto; /* Permite que o topo cresça se o texto quebrar linha */
+        padding: 10px 0;
+    }
+}
+
+header {
+    background: #1F6F5F;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    position: relative; /* Cria uma referência para posicionar o texto no centro absoluto */
+    padding: 0 20px;
+}
+
+.top-logo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-img {
+    width: 300px;
+    position: relative;
+    z-index: 2; /* Garante que a logo fique por cima se a tela encolher */
+}
+
+.top-logo p {
+    color: white;
+    font-size: 18px;
+    margin: 0;
+    
+    /* Mágica para centralizar APENAS o texto no meio exato do header */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap; /* Impede o texto de quebrar linha em telas normais */
+}
+
+/* Ajuste para o celular não embolar a logo com o texto */
+@media (max-width: 768px) {
+    header {
+        height: auto;
+        padding: 15px;
+    }
+    
+    .top-logo {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logo-img {
+        width: 180px;
+    }
+
+    .top-logo p {
+        /* No celular, desfaz o posicionamento absoluto para eles não cobrirem um ao outro */
+        position: static;
+        transform: none;
+        white-space: normal;
+        text-align: center;
+    }
+}
+
+/* --- TELA DE DETALHES DA RUA --- */
+
+.container-historia {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.historia-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.historia-header h2 {
+    color: #1F6F5F;
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+.historia-header .subtitulo {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Botão X para voltar ao mapa do bairro */
+.btn-fechar {
+    text-decoration: none;
+    color: #333;
+    font-size: 32px;
+    line-height: 24px;
+    transition: 0.2s;
+}
+
+.btn-fechar:hover {
+    color: #cc0000;
+}
+
+/* Organização Foto + Ficha Técnica */
+.historia-topo {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.foto-perfil img {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.ficha-tecnica {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.info-item .icone {
+    font-size: 20px;
+}
+
+.info-item strong {
+    font-size: 14px;
+    color: #333;
+}
+
+.info-item p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Seções de Texto */
+.secao-historia {
+    margin-bottom: 25px;
+}
+
+.secao-historia h3 {
+    color: #1F6F5F;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.secao-historia p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Galeria de Fotos antigas */
+.galeria-fotos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.galeria-fotos img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* Fontes no rodapé interno do cartão */
+.fontes-historicas {
+    background: none !important;
+    color: #666 !important;
+    text-align: left !important;
+    padding: 15px 0 0 0 !important;
+    border-top: 1px solid #eee;
+    font-size: 13px !important;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 600px) {
+    .historia-topo {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .foto-perfil img {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+/* --- BOTÃO DO STREET VIEW --- */
+
+.link-streetview {
+    text-decoration: none;
+    display: block;
+    margin-top: 15px;
+}
+
+.banner-streetview {
+    background: linear-gradient(135deg, #1F6F5F, #14506b);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.banner-streetview:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, #2fa084, #1a6282);
+}
+
+.icone-mapa {
+    font-size: 28px;
+}
+
+.banner-streetview strong {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
